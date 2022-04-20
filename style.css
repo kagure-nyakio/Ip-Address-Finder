@@ -50,7 +50,7 @@ h4 {
 header {
 	background-image: url(./images/pattern-bg.png);
 	text-align: center;
-	padding-top: 1em;
+	padding: 1em 0; 
 	min-height: 40vh;
 	position: relative;
 }
