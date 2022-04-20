@@ -1,0 +1,133 @@
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+} 
+
+:root {
+  --very-dark-gray: hsl(0, 0%, 17%);
+  --dark-gray: hsl(0, 0%, 59%);
+
+	--ff-main: 'Rubik', sans-serif;
+  --fs-body: 1.125rem;
+	--fs-heading: 1.5rem;
+  --fs-subheading: 0.75rem;
+
+  --fw-reg: 400;
+  --fw-med: 500;
+  --fw-bold: 700;
+}
+
+body {
+	font-size: var(--fs-body);
+	font-family: var(--ff-main);
+	font-weight: var(--fw-reg);
+	letter-spacing: 1.5px;
+	margin: 0;
+}
+
+/* Typography */
+h1 {
+	color: #fff;
+	font-size: var(--fs-heading);
+	font-weight: var(--fw-med);
+	margin-top: 0;
+}
+
+h4 {
+	color: var(--dark-gray);
+	text-transform: uppercase;
+	font-size: var(--fs-subheading);
+	margin-bottom: 0;
+}
+
+.ip-detail-text {
+	color: var(--very-dark-gray);
+	font-weight: var(--fw-bold);
+}
+
+/* Layout */
+header {
+	background-image: url(./images/pattern-bg.png);
+	text-align: center;
+	padding-top: 1em;
+	min-height: 40vh;
+	position: relative;
+}
+
+/* form */
+.ip-form {
+	width: 60%;
+	display: flex;
+	margin: 1em auto;
+}
+
+.ip-addr {
+	font-family: inherit;
+	padding: 1em 2em;
+	flex-grow: 1;
+	border: var(--very-dark-gray) 1px solid;
+	border-radius: 10px;
+}
+
+.btn {
+	background: var(--very-dark-gray);
+	color: #fff;
+	padding: 0 1.5em;
+	border: none;
+	border-radius: 0 10px 10px 0;
+	position: relative;
+	right: 15px;
+}
+
+.ip-details {
+	text-align: center;
+	border-radius: 15px;
+	background-color: #fff;
+	box-shadow: 0 3px 10px rgba(0 0 0 / 0.2);
+	width: 80%;
+	height: fit-content;
+	margin: 0 auto;
+	padding: .5em 2em;
+	position: absolute;
+	top: 150px;
+	bottom: 2px;
+	right: 10px;
+	left: 10px;
+	z-index: 1000;
+}
+
+.ip-detail-text {
+	margin-top: .5em;
+	opacity: .85;
+}
+
+.map-section{
+  min-height: 60vh;
+	position: relative;
+}
+
+/* media queries */
+@media (min-width: 600px) {
+	:root {
+		--fs-body: .85rem;
+	}
+
+	.ip-details {
+		top: 200px;
+		gap: 1em;
+		grid-template-areas: 
+		"title-ip title-location title-tz title-isp"
+		"details-ip details-location details-tz details-isp";
+	}
+
+	.title-ip { grid-area: title-ip; }
+	.title-location { grid-area: title-location; } 
+	.title-tz { grid-area: title-tz; } 
+	.title-isp { grid-area: title-isp; }
+	.details-ip { grid-area: details-ip; } 
+	.details-location { grid-area: details-location; } 
+	.details-tz { grid-area: details-tz; } 
+	.details-isp { grid-area: details-isp; }
+
+}
