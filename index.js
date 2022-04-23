@@ -6,7 +6,7 @@ let map;
 
 // load user current IP when the DOM loads
 window.addEventListener('load', () => {
-	ipDetailsEl.style.display = "none"
+  ipDetailsEl.style.display = "none"
 	fetch('https://api.ipify.org/?format=json')
     .then(res => {
 			if(!res.ok) {
@@ -71,30 +71,24 @@ function renderMap(lat, lng) {
 }
 
 function renderIpDetailsHTML(ipData) {
+	const {ip, country, city, region, timezone, isp } = ipData
+
 	return `
 		<h4 class="ip-detail-title title-ip"> ip address </h4>
-		<p class="ip-detail-text details-ip"> ${ipData.ip} </p>
+		<p class="ip-detail-text details-ip"> ${ip} </p>
 		<h4 class="ip-detail-title title-location"> location </h4>
-		<p class="ip-detail-text details-location"> ${ipData.country},${ipData.city}, ${ipData.region} </p>
+		<p class="ip-detail-text details-location"> ${country},${city}, ${region} </p>
 		<h4 class="ip-detail-title title-tz"> timezone </h4>
-		<p class="ip-detail-text details-tz"> UTC ${ipData.timezone} </p>
+		<p class="ip-detail-text details-tz"> UTC ${timezone} </p>
 		<h4 class="ip-detail-title title-isp"> isp </h4>
-		<p class="ip-detail-text details-isp"> ${ipData.isp} </p>
+		<p class="ip-detail-text details-isp"> ${isp} </p>
 	`
 }
 
 
 function getIpDetails(ipData) {
-	return {
-		ip: ipData.ip,
-		country: ipData.location.country,
-		city:ipData.location.city,
-		region: ipData.location.region,
-		lat: ipData.location.lat,
-		lng: ipData.location.lng,
-		timezone: ipData.location.timezone,
-		isp: ipData.isp
-	}
+	const { ip, location: {country, city, region, lat, lng, timezone}, isp } = ipData
+	return { ip, country, city, region, lat, lng, timezone, isp }
 }
 
 
